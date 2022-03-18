@@ -1,0 +1,75 @@
+<div class="container">
+    <section class="manageEmployee" *ngIf="isCreate">
+      <app-upload (onUploadFinished)="uploadFinished($event)" ></app-upload>
+
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="nome">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>RG</mat-label>
+        <input type="number" matInput [(ngModel)]="rg">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="accent" >
+        <mat-label>Escolher departamento</mat-label>
+        <mat-select [(ngModel)]="departamentoId">
+            <mat-option *ngFor="let department of dataDepartment" [value]="department.id"> {{department.nome}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        <button mat-button color="accent" (click)="onCancel()">Cancelar</button>
+        <button mat-button color="accent" *ngIf="!isChange" (click)="onCreate()" cdkFocusInitial>Adicionar</button>
+        <button mat-button color="accent" *ngIf="isChange" (click)="onEdit()" cdkFocusInitial>Editar</button>
+      </div>
+    </section>
+
+    <section *ngIf="!isCreate">
+        <button mat-button color="accent" (click)="returnToCreate()">Adicionar funcionário</button>
+        <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let employee"> {{employee.id}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="foto">
+                <th mat-header-cell *matHeaderCellDef> Foto </th>
+                <td class="divPhoto" mat-cell *matCellDef="let employee"> <img [src]="createImgPath(employee.foto)" alt="profile picture"> </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let employee"> {{employee.nome}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="rg">
+                <th mat-header-cell *matHeaderCellDef> RG </th>
+                <td mat-cell *matCellDef="let employee"> {{employee.rg}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="departamentoId">
+                <th mat-header-cell *matHeaderCellDef> Departamento </th>
+                <td mat-cell *matCellDef="let employee"> {{getDepartmentId(employee)}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Ações </th>
+                <td mat-cell *matCellDef="let employee, let department">  
+                    <button mat-icon-button (click)="editEmployee(employee)" color="accent">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="deleteEmployee(employee.id)" color="accent">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </section>
+</div> 
+  
+

@@ -1,0 +1,16 @@
+.toolbar {
+    background-color: #212121;
+    color: #fff;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-logo {
+    text-decoration: none;
+    color: #fff;
+}
+
+.example-button-row {
+    align-items: center;
+    justify-content: center;
+}

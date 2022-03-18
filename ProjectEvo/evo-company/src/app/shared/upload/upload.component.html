@@ -1,0 +1,14 @@
+<div >
+    <div class="divUpload">
+        <input type="file" #file placeholder="Escolher foto" color="accent" (change)="uploadFile(file.files)" style="display:none;" accept=".jpg, .png">
+        <button type="button" mat-flat-button color="accent" (click)="file.click()">Escolher foto</button>
+    </div>
+    <div class="message">
+        <span class="upload" *ngIf="progress > 0">
+            {{progress}}%
+        </span>
+        <span class="upload" *ngIf="message">
+            {{message}}
+        </span>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.divUpload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+}
+
+.upload{
+    color:#fff;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+}

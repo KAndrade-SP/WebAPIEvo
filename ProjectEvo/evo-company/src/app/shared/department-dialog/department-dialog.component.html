@@ -1,0 +1,19 @@
+<div class="container">
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="data.nome">
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Sigla</mat-label>
+        <input matInput [(ngModel)]="data.sigla">
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancelar</button>
+      <button mat-button *ngIf="!isChange" [mat-dialog-close]="data" cdkFocusInitial>Adicionar</button>
+      <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Editar</button>
+    </div>
+</div>
+
+

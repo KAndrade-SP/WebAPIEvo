@@ -1,0 +1,36 @@
+table {
+    width: 100%;
+}
+
+.container {
+    padding: 50px 80px 25px;
+    background-color: #242424;
+    height: 100%;
+}
+
+.divPhoto {
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.4rem;
+}
+
+img {
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.manageEmployee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+mat-form-field {
+    width: 16rem;
+}
+
+input {
+    color: #fff
+}
