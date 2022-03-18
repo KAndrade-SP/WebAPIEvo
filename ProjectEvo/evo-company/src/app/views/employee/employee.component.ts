@@ -24,7 +24,7 @@ export class EmployeeComponent implements OnInit {
   id!: number
   nome!: string
   foto!: string
-  rg!: any
+  rg!: number
   departamentoId!: number
   employee!: Employees
   response!: {dbPath: ''}
@@ -51,7 +51,7 @@ export class EmployeeComponent implements OnInit {
     }
 
     onCreate = () => {
-      if (this.nome == '' || this.rg == '' || this.checkPhoto == false || this.departamentoId == 0) {
+      if (this.nome == '' || this.checkPhoto == false || this.departamentoId == 0) {
         alert('Há campos inválidos')
       } else {
         this.employee = {
@@ -73,9 +73,9 @@ export class EmployeeComponent implements OnInit {
     }
 
     onEdit = () =>  {
-      if (this.nome == '' || this.rg == '' || this.checkPhoto == false || this.departamentoId == 0) {
+      if (this.nome == '' || this.departamentoId == 0) {
         alert('Há campos inválidos')
-      } else {
+      } else { 
         this.employee = {
           id: this.id,
           nome: this.nome,
@@ -110,7 +110,7 @@ export class EmployeeComponent implements OnInit {
       this.isCreate = true
       this.nome = ''
       this.foto = ''
-      this.rg = ''
+      this.rg = 
       this.departamentoId = 0
     }
 
@@ -123,6 +123,7 @@ export class EmployeeComponent implements OnInit {
 
     public uploadFinished = (event: any) => {
       this.response = event
+      this.foto = this.response?.dbPath
       this.checkPhoto = true
     }
 

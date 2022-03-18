@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   id!: number
   nome!: string
   foto!: string
-  rg!: any
+  rg!: number
   departamentoId!: number
   employee!: Employees
   department!: Departments
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
   }
 
   onEdit = () =>  {
-    if (this.nome == '' || this.rg == '' || this.checkPhoto == false || this.departamentoId == 0) {
+    if (this.nome == '' || this.departamentoId == 0) {
       alert('Há campos inválidos')
     } else {
       this.employee = {
@@ -72,8 +72,7 @@ export class HomeComponent implements OnInit {
         rg: this.rg,
         foto: this.foto,
         departamentoId: this.departamentoId
-      }
-  
+      } 
       this.employeeService.editEmployee(this.employee)
       .subscribe(res => {
         this.isCreate = false
@@ -186,6 +185,7 @@ export class HomeComponent implements OnInit {
 
   public uploadFinished = (event: any) => {
     this.response = event
+    this.foto = this.response?.dbPath
     this.checkPhoto = true
   }
 
